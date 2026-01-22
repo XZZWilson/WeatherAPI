@@ -1,0 +1,1 @@
+This is a Capstone Project that will tell the user the current weather at their location
