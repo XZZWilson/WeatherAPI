@@ -1,0 +1,26 @@
+{
+  "name": "capstone4-publicapi",
+  "version": "1.0.0",
+  "description": "This is a Capstone Project that will tell the user the current weather at their location",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XZZWilson/WeatherAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/XZZWilson/WeatherAPI/issues"
+  },
+  "homepage": "https://github.com/XZZWilson/WeatherAPI#readme",
+  "dependencies": {
+    "axios": "^1.13.3",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1"
+  }
+}

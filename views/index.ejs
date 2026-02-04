@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nimbus</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+  </head>
+  <body>
+    <div class="data-area">
+      <% if (showWeather) { %>
+        <% if (temperature !== null) { %>
+          <h2>Current Temperature in Blacksburg</h2>
+          <p><strong><%= temperature %></strong> &deg;<%= unit %></p>
+        <% } %>
+
+        <% if (error) { %>
+          <p class="error"><%= error %></p>
+        <% } %>
+
+        <% if (hourly && hourly.length > 0) { %>
+          <h3>Next 12 Hours</h3>
+          <ul class="hourly-list">
+            <% hourly.forEach((entry) => { %>
+              <li class="hourly-item">
+                <div class="hourly-icon">
+                  <% if (entry.icon === "sun") { %>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4" />
+                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M19.4 4.6l-2.1 2.1M6.7 17.3l-2.1 2.1" />
+                    </svg>
+                  <% } else if (entry.icon === "partly") { %>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="8" cy="8" r="3" />
+                      <path d="M8 2v2M8 12v2M2 8h2M12 8h2M4.6 4.6l1.4 1.4M10 10l1.4 1.4" />
+                      <path d="M6 18h9a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.6 2" />
+                    </svg>
+                  <% } else if (entry.icon === "snow") { %>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 2v20M4 6l16 12M20 6L4 18" />
+                    </svg>
+                  <% } else { %>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M6 18h9a3.5 3.5 0 0 0 0-7 5 5 0 0 0-9.6 2" />
+                    </svg>
+                  <% } %>
+                </div>
+                <div class="hourly-meta">
+                  <span class="hourly-time"><%= entry.time %></span>
+                  <span class="hourly-temp"><%= entry.temperature %> &deg;<%= unit %></span>
+                </div>
+              </li>
+            <% }) %>
+          </ul>
+        <% } %>
+      <% } else { %>
+        <p class="placeholder">Click the Weather button to load the latest forecast.</p>
+      <% } %>
+    </div>
+
+    <form id="myForm" method="post">
+      <input
+        id="location"
+        type="submit"
+        value="Weather"
+        formaction="/weather"
+      />
+    </form>
+  </body>
+</html>
